@@ -104,7 +104,7 @@ with col1:
     
 
 
-with col2: #temiz png yerine yüklene resim
+with col2: #temiz png yerine yüklene resim ile değiştirme
     if gonder:
         if not uploaded_file:
             alert.warning('Resimi Tekrar Yükleyin', icon="⚠️")
