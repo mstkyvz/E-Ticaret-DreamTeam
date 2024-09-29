@@ -118,7 +118,7 @@ with col2:
             output=response.json()['output']
             base64_image = image_to_base64(image)
             try:
-                output=output.replace("```json","").replace("`","")
+                output=output.replace("```json","").replace("`","").replace("“","\"").replace("”","\"")
                 print(output)
                 output=extract_and_convert_to_json(output)
                 print(output)

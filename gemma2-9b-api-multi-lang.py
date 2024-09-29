@@ -2,7 +2,7 @@ from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.responses import JSONResponse
 import torch
 from PIL import Image
-from transformers import AutoModelForCausalLM,AutoModelForSequenceClassification,AutoTokenizer
+from transformers import AutoModelForCausalLM
 import io
 import os
 
@@ -10,30 +10,11 @@ app = FastAPI()
 
 model = AutoModelForCausalLM.from_pretrained("AIDC-AI/Ovis1.6-Gemma2-9B",
                                              torch_dtype=torch.bfloat16,
-                                             multimodal_max_length=1024,
+                                             device_map="auto",
+                                             multimodal_max_length=2048,
                                              trust_remote_code=True).cuda()
 text_tokenizer = model.get_text_tokenizer()
 visual_tokenizer = model.get_visual_tokenizer()
-
-
-model_ckpt = "papluca/xlm-roberta-base-language-detection"
-tokenizer_lang = AutoTokenizer.from_pretrained(model_ckpt)
-model_lang = AutoModelForSequenceClassification.from_pretrained(model_ckpt)
-
-
-
-def get_lang(text):
-    lang = tokenizer_lang(text, padding=True, truncation=True, return_tensors="pt")
-    with torch.no_grad():
-        logits = model_lang(**lang).logits
-
-    preds = torch.softmax(logits, dim=-1)
-    id2lang = model_lang.config.id2label
-    vals, idxs = torch.max(preds, dim=1)
-
-
-    first_key = id2lang[idxs[0].item()]
-    return first_key
 
 
 def read_text_file(file_name):
@@ -50,16 +31,11 @@ def read_text_file(file_name):
                 return file.read()
             
             
-
 @app.post("/process/")
-async def process_image_and_text(image: UploadFile = File(...), text: str = Form(...)):
-    
-    
+async def process_image_and_text(image: UploadFile = File(...), text: str = Form(...),lang: str = Form(...)):
     image_content = await image.read()
     pil_image = Image.open(io.BytesIO(image_content))
-    lang=get_lang(text)
     prompt = read_text_file(f"{lang}.txt")+text
-    
     query = f'<image>\n{prompt}'
     
     prompt, input_ids, pixel_values = model.preprocess_inputs(query, [pil_image])
