@@ -106,42 +106,42 @@ with col1:
 
 with col2:
     if gonder:
-        files = {'image': uploaded_file}
-        data = {'text': description}
-        print(uploaded_file)
         if not uploaded_file:
             alert.warning('Resimi Tekrar Yükleyin', icon="⚠️")
-            preview_container(uploaded_file,description)
-        else:    
-            image = Image.open("temiz.png")
+            preview_container(uploaded_file, description)
+        else:
+            files = {'image': uploaded_file}
+            data = {'text': description}
             response = requests.post(url, files=files, data=data)
-            output=response.json()['output']
-            base64_image = image_to_base64(image)
+            output = response.json()['output']
+            
+            # Use the uploaded image directly
+            uploaded_image = Image.open(uploaded_file)
+            base64_image = image_to_base64(uploaded_image)
+
             try:
-                output=output.replace("```json","").replace("`","")
-                print(output)
-                output=extract_and_convert_to_json(output)
-                print(output)
-                urun_adi=output['product_name']
-                urun_aciklama=output['product_detailed_description']
+                output = output.replace("```json", "").replace("`", "")
+                output = extract_and_convert_to_json(output)
+                urun_adi = output['product_name']
+                urun_aciklama = output['product_detailed_description']
             except Exception as e:
                 print(e)
-                urun_adi=""
-                urun_aciklama=output
-            st.markdown(
-            f"""
-            <div style="display:flex; flex-direction: column; justify-content: flex-start; border-radius: 5px; align-items: center; width: 100%; height: 600px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
-            <h2>Çıktı</h2>
-            <h4>{urun_adi}</h4>
-                <div style="width: 90%; height: 600px; overflow: hidden;">
-                    <img src="data:image/png;base64,{base64_image}" style="width: 100%; height: 100%; object-fit: contain;"/>
-                </div>
-            <h5 style="margin:30px;" >{urun_aciklama}</h5>    
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+                urun_adi = ""
+                urun_aciklama = output
 
+            st.markdown(
+                f"""
+                <div style="display:flex; flex-direction: column; justify-content: flex-start; border-radius: 5px; align-items: center; width: 100%; height: 600px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+                <h2>Çıktı</h2>
+                <h4>{urun_adi}</h4>
+                    <div style="width: 90%; height: 600px; overflow: hidden;">
+                        <img src="data:image/png;base64,{base64_image}" style="width: 100%; height: 100%; object-fit: contain;"/>
+                    </div>
+                <h5 style="margin:30px;" >{urun_aciklama}</h5>    
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
     else:
-        preview_container(uploaded_file,description)
+        preview_container(uploaded_file, description)
 
