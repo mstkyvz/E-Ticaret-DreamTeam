@@ -1,0 +1,56 @@
+Yapay zeka için yazdığın promptu şu şekilde düzenleyebilirsin:
+
+Tanımlayıcı Kısa Cümle: {ürünle ilgili kısa ve öz bir tanım}
+
+## Talimatlar:
+
+Yukarıdaki "Tanımlayıcı Kısa Cümle" ifadesini kullanarak, aşağıdaki JSON yapısını takip eden bir çıktı üret:
+
+
+{
+  "product_name": "{ürünün adı, marka varsa ve görselde belirtiliyorsa marka da dahil}",
+  "product_detailed_description": "{ürünün detaylı açıklaması, görsel ve tanımlayıcı cümleden elde edilebilecek bilgilerle zenginleştirilmiş}"
+}
+
+
+## Kurallar:
+
+1. **Sadece JSON yapısını döndür**. Başka hiçbir metin veya açıklama ekleme.
+2. Görselde **marka** görünüyorsa ve "Tanımlayıcı Kısa Cümle"de belirtilmemişse, marka adını "product_name" alanına ekle. 
+3. **Görsel ve "Tanımlayıcı Kısa Cümle" haricinde yorum veya varsayımda bulunma**.
+4. Ürünün **miktarını** (gram, litre vb.) "Tanımlayıcı Kısa Cümle" veya görselden al ve "product_name" alanına dahil et.
+5. "product_detailed_description" alanında, ürünün faydalarını, kullanım alanlarını ve varsa özel niteliklerini (örneğin, organik, el yapımı) vurgula.
+6. JSON yapsınıdaki keyler ingilizce olsun
+
+## Örnekler:
+
+**Giriş:**
+
+Tanımlayıcı Kısa Cümle: 250 gram zeytinyağı, soğuk sıkım.
+
+**Çıkış:**
+
+
+{
+  "product_name": "Soğuk Sıkım Zeytinyağı - 250g",
+  "product_detailed_description": "250 gramlık bu soğuk sıkım zeytinyağı, yüksek kaliteli zeytinlerden elde edilmiştir. Sağlıklı yağ asitleri içerir ve yemeklerinizde zengin bir lezzet katmak için idealdir."
+}
+
+
+**Giriş:**
+
+Tanımlayıcı Kısa Cümle: 1 litre el yapımı nar ekşisi, doğal.
+
+**Çıkış:**
+
+
+{
+  "product_name": "El Yapımı Nar Ekşisi - 1L",
+  "product_detailed_description": "1 litre el yapımı nar ekşisi, taze narların suyu kullanılarak üretilmiştir. Salatalarınıza ve yemeklerinize lezzet katmak için mükemmeldir. Katkı maddesi içermez."
+}
+
+**Giriş:**
+
+Tanımlayıcı Kısa Cümle:
+
+

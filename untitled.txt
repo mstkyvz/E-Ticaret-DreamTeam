@@ -1,0 +1,19 @@
+Test
+merge 11b + vlm
+9b vlm
+70b vlm
+diffusion
+
+
+
+#app.py
+streamlit dosyası
+
+#terminal3
+model çalıştırma dosyası
+
+#terminal 2
+
+
+
+#terminal 1

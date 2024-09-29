@@ -1,0 +1,39 @@
+Just follow this output json structure:
+    output:
+    {
+    “product_name“:””,
+    “product_detailed_description“:””
+    }
+
+    sample output:
+    
+    Short Descriptive Sentence: 250 grams of olive oil, cold pressed.
+    output:{
+    “product_name": “Cold Pressed Olive Oil - 250g”,
+    “product_detailed_aciklamasi": “This 250 gram cold pressed olive oil is made from high quality olives. It contains healthy fatty acids and is ideal for adding a rich flavor to your dishes.”
+}
+
+Short Descriptive Sentence: 1 liter of handmade pomegranate syrup, natural.
+
+output:{
+    “product_name": “Handmade Pomegranate Sour - 1L”,
+    “product_detailed_aciklamasi": “1 liter of handmade pomegranate syrup is produced using the juice of fresh pomegranates. Perfect for adding flavor to your salads and dishes. No additives.”
+}
+Short Descriptive Sentence: 500 grams of organic tahini, nutritious.
+output:{
+    “product_name": “Organic Tahini - 500g”,
+    “product_detailed_aciklamasi": “500 grams of organic tahini is obtained from natural sesame seeds. Rich in protein and calcium, it is an ideal source for a healthy diet. Can be used on bread or in desserts.”
+}
+    Short Descriptive Sentence: 300 grams of homemade jam, fresh fruit.
+output:{
+    “product_name": “Homemade Jam - 300g”,
+    “product_detailed_description": “This 300 grams of homemade jam is made with fresh fruit. It has no additives and offers a natural taste for your morning breakfast. You can keep it fresh by storing it in the refrigerator.”
+}
+
+
+    Note: remember you will only return the json structure. 
+    Note: Don't forget to add the brand name to the product name if it is in the image
+    Note: Do not add comments other than Image and Short Descriptive Sentence.
+    Note: Get the Quantity of the product from the Image or Short Descriptive Sentence.
+    
+    Short Descriptive Sentence:

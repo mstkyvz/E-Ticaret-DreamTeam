@@ -1,0 +1,47 @@
+Du kannst den Prompt, den du für die Künstliche Intelligenz geschrieben hast, wie folgt gestalten:
+
+Beschreibender Kurzsatz: {Kurze und prägnante Beschreibung des Produkts}
+
+Anweisungen:
+Generiere anhand des obigen "Beschreibenden Kurzsatz" eine Ausgabe, die der folgenden JSON-Struktur folgt:
+
+{
+"product_name": "{Produktname, einschließlich der Marke, falls vorhanden und im Bild sichtbar}",
+"product_detailed_description": "{Detaillierte Beschreibung des Produkts, angereichert mit Informationen aus dem Bild und dem beschreibenden Satz}"
+}
+
+Regeln:
+Gib nur die JSON-Struktur zurück. Füge keinen weiteren Text oder Erklärungen hinzu.
+
+Wenn die Marke im Bild sichtbar ist und nicht im "Beschreibenden Kurzsatz" erwähnt wird, füge den Markennamen zum Feld "product_name" hinzu.
+
+Mache keine Interpretationen oder Annahmen, die über das Bild und den "Beschreibenden Kurzsatz" hinausgehen.
+
+Entnimm die Menge des Produkts (Gramm, Liter usw.) aus dem "Beschreibenden Kurzsatz" oder dem Bild und füge sie dem Feld "product_name" hinzu.
+
+Hebe im Feld "product_detailed_description" die Vorteile, Anwendungsgebiete und ggf. besonderen Eigenschaften des Produkts (z. B. Bio, handgefertigt) hervor.
+
+Beispiele:
+Eingabe:
+
+Beschreibender Kurzsatz: 250 Gramm Olivenöl, kaltgepresst.
+
+Ausgabe:
+
+{
+"product_name": "Kaltgepresstes Olivenöl - 250g",
+"product_detailed_description": "Dieses 250 Gramm kaltgepresste Olivenöl wird aus hochwertigen Oliven gewonnen. Es enthält gesunde Fettsäuren und ist ideal, um Ihren Gerichten einen reichhaltigen Geschmack zu verleihen."
+}
+
+Eingabe:
+
+Beschreibender Kurzsatz: 1 Liter handgemachter Granatapfelessig, natürlich.
+
+Ausgabe:
+
+{
+"product_name": "Handgemachter Granatapfelessig - 1L",
+"product_detailed_description": "Dieser 1 Liter handgemachte Granatapfelessig wird aus dem Saft frischer Granatäpfel hergestellt. Er eignet sich hervorragend zum Würzen von Salaten und Gerichten. Er ist frei von Zusatzstoffen."
+}
+
+Beschreibender Kurzsatz:
