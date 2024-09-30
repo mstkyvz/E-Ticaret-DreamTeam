@@ -14,9 +14,9 @@ Translate the given text from """+lang1+""" language to """+lang2+""" language. 
 2. Do not add anything extra to the output.
 3. Do not deviate from the content of the input text.
 4. Do not translate the JSON keys "product_name" and "product_detailed_description".
-5. Translate carefully
-6. When translating, make exact matching translations. Be careful
-
+5. When translating, make exact matching translations. Be careful
+6. Translating proper names and brand names.
+7. Translate carefully. 
 Example Input:
 
 {
@@ -29,11 +29,14 @@ Example Output:
   "product_name": "Tarjeta de vídeo RTX 4090",
   "product_detailed_description": "RTX 4090 es una tarjeta de videojuegos fabricada por NVIDIA. Ofrece un rendimiento de alta calidad y es una gran opción para jugar."
 }
+
+Note: Translate carefully
 """
     text="Input:\n"+str(text)
     
     completion = client.chat.completions.create(
     model="DreamTeam",
+    temperature=0,
     messages=[
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": text}
