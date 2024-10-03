@@ -19,6 +19,11 @@
 - **Görüntü İşleme**: Pillow
 - **Dil Algılama**: papluca/xlm-roberta-base-language-detection
 
+## Screenshots
+
+  ![App Screenshot](https://cdn.discordapp.com/attachments/1272855813370806313/1291259017804386344/Ekran_Resmi_2024-10-03_07.42.11.png?ex=66ff722c&is=66fe20ac&hm=367a3a36b6624701a0e3135d82089d7f9847f3619672ffedc75dad12742f6049&)
+
+
 ## Sistem Gereksinimleri
 
 - Python 3.8+
