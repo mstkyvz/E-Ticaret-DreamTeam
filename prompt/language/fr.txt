@@ -1,47 +1,56 @@
-Vous pouvez améliorer votre invite d'IA en utilisant la structure suivante :
+Phrase descriptive concise : {une description courte et concise du produit}
 
-Phrase descriptive concise : {une description courte et concise du produit}
+## Instructions :
 
-Instructions :
-En utilisant la "Phrase descriptive concise" ci-dessus, générez une sortie qui suit la structure JSON suivante :
+En utilisant la « phrase descriptive concise » ci-dessus, générez une sortie qui suit la structure JSON suivante :
 
-{
-"product_name": "{nom du produit, y compris la marque si elle est visible sur l'image et spécifiée}",
-"product_detailed_description": "{description détaillée du produit, enrichie par les informations de l'image et de la phrase descriptive}"
-}
-
-Règles :
-Retournez uniquement la structure JSON. N'ajoutez aucun autre texte ou explication.
-
-Si la marque est visible sur l'image et n'est pas mentionnée dans la "Phrase descriptive concise", ajoutez le nom de la marque dans le champ "product_name".
-
-Ne faites aucune supposition ou interprétation au-delà de l'image et de la "Phrase descriptive concise".
-
-Extrayez la quantité du produit (grammes, litres, etc.) de la "Phrase descriptive concise" ou de l'image et incluez-la dans le champ "product_name".
-
-Dans le champ "product_detailed_description", mettez en évidence les avantages du produit, ses utilisations et ses attributs spécifiques, le cas échéant (par exemple, biologique, artisanal).
-
-Exemples :
-Entrée :
-
-Phrase descriptive concise : Huile d'olive vierge extra 250g.
-
-Sortie :
 
 {
-"product_name": "Huile d'olive vierge extra - 250g",
-"product_detailed_description": "Cette huile d'olive vierge extra de 250g est obtenue à partir d'olives de haute qualité. Elle est riche en acides gras sains et idéale pour ajouter une saveur riche à vos plats."
+  "product_name": "{nom du produit, y compris la marque si elle est visible sur l'image et spécifiée}",
+  "product_detailed_description": "{description détaillée du produit, enrichie d'informations provenant de l'image et de la phrase descriptive}"
 }
 
-Entrée :
 
-Phrase descriptive concise : Vinaigre de grenade artisanal 1L, naturel.
+## Règles :
 
-Sortie :
+1. **Renvoyez uniquement la structure JSON**. N'ajoutez aucun autre texte ou explication.
+2. Si la **marque** est visible sur l'image et n'est pas mentionnée dans la « phrase descriptive concise », ajoutez le nom de la marque au champ « product_name ».
+3. **Ne faites aucune supposition et ne tirez aucune conclusion en dehors de l'image et de la « phrase descriptive concise ».**
+4. Extrayez la **quantité** du produit (grammes, litres, etc.) de la « phrase descriptive concise » ou de l'image et incluez-la dans le champ « product_name ».
+5. Dans le champ « product_detailed_description », mettez en évidence les avantages, les utilisations et les qualités spécifiques du produit (par exemple, biologique, artisanal), le cas échéant.
+6. Les clés JSON doivent être en anglais.
+7. Ne modifiez pas les clés JSON "product_name" et "product_detailed_description".
+
+## Exemples :
+
+**Entrée :**
+
+Phrase descriptive concise : 250 grammes d'huile d'olive, première pression à froid.
+
+**Sortie :**
+
 
 {
-"product_name": "Vinaigre de grenade artisanal - 1L",
-"product_detailed_description": "Ce vinaigre de grenade artisanal de 1L est produit à partir du jus de grenades fraîches. Il est parfait pour assaisonner vos salades et vos plats. Il est sans additifs."
+  "product_name": "Huile d'olive première pression à froid - 250g",
+  "product_detailed_description": "Cette huile d'olive de 250 grammes, première pression à froid, est obtenue à partir d'olives de haute qualité.  Elle contient des acides gras sains et est idéale pour ajouter une riche saveur à vos plats."
 }
 
-Phrase descriptive concise :
+
+**Entrée :**
+
+Phrase descriptive concise : 1 litre de jus de grenade artisanal, naturel.
+
+**Sortie :**
+
+
+{
+  "product_name": "Jus de grenade artisanal - 1L",
+  "product_detailed_description": "Ce jus de grenade artisanal de 1 litre est produit à partir de grenades fraîches. Il est parfait pour assaisonner vos salades et vos plats. Sans additifs."
+}
+
+**Entrée :**
+
+Phrase descriptive concise :
+
+
+

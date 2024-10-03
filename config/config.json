@@ -1,0 +1,44 @@
+{
+  "model": {
+    "ckpt": "papluca/xlm-roberta-base-language-detection",
+    "gguf_path": "gguf/gemma-2-9b-it-Q4_K_M.gguf"
+  },
+  "api": {
+    "url": "http://0.0.0.0:8000/process"
+  },
+  "languages": {
+    "supported": ["en", "zh", "es", "fr", "tr", "ar", "ru", "it"],
+    "map": {
+      "en": "english",
+      "zh": "chinese",
+      "es": "spanish",
+      "fr": "french",
+      "tr": "turkish",
+      "ar": "arabic",
+      "ru": "russian",
+      "it": "italian"
+    }
+  },
+  "image": {
+    "max_width": 1080,
+    "max_height": 720
+  },
+  "paths": {
+    "flags": "static/flag/",
+    "empty_image": "static/empty.png",
+    "output_image": "static/temiz.png",
+    "language_prompts": "../prompt/language/"
+  },
+  "gemma": {
+    "model_name": "AIDC-AI/Ovis1.6-Gemma2-9B",
+    "multimodal_max_length": 2048,
+    "generation": {
+      "max_new_tokens": 1024,
+      "do_sample": false,
+      "top_p": null,
+      "top_k": null,
+      "temperature": null,
+      "repetition_penalty": null
+    }
+  }
+}

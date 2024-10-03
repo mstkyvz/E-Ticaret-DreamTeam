@@ -1,0 +1,46 @@
+Frase Descriptiva Corta: {una descripción breve y concisa del producto}
+
+## Instrucciones:
+
+Usando la "Frase Descriptiva Corta" anterior, genera una salida siguiendo la estructura JSON a continuación:
+
+{
+  "product_name": "{nombre del producto, incluyendo la marca si se menciona o se ve en la imagen}",
+  "product_detailed_description": "{una descripción detallada del producto, enriquecida con información de la imagen y la frase descriptiva}"
+}
+
+## Reglas:
+
+1. **Devuelve solo la estructura JSON**. No añadas ningún texto o explicación adicional.
+2. Si una **marca** es visible en la imagen pero no se menciona en la "Frase Descriptiva Corta", agrégala al campo "product_name".
+3. **No hagas suposiciones ni interpretaciones** más allá de la imagen y la "Frase Descriptiva Corta".
+4. Si la **cantidad** (gramos, litros, etc.) se menciona en la "Frase Descriptiva Corta" o es visible en la imagen, inclúyela en el campo "product_name".
+5. En el campo "product_detailed_description", resalta los beneficios, usos y cualquier característica especial del producto (por ejemplo, orgánico, hecho a mano).
+6. Las claves de la estructura JSON deben estar en inglés.
+7. Mantén las claves JSON como "product_name" y "product_detailed_description", no las cambies.
+
+## Ejemplos:
+
+**Entrada:**
+
+Frase Descriptiva Corta: 250 gramos de aceite de oliva, prensado en frío.
+
+**Salida:**
+
+{
+  "product_name": "Aceite de Oliva Prensado en Frío - 250g",
+  "product_detailed_description": "Este aceite de oliva prensado en frío de 250 gramos está hecho con aceitunas de alta calidad. Contiene ácidos grasos saludables y es ideal para añadir un sabor rico a tus platos."
+}
+
+**Entrada:**
+
+Frase Descriptiva Corta: 1 litro de melaza de granada artesanal, natural.
+
+**Salida:**
+
+{
+  "product_name": "Melaza de Granada Artesanal - 1L",
+  "product_detailed_description": "Esta melaza de granada artesanal de 1 litro está hecha con jugo de granadas frescas. Es perfecta para añadir sabor a ensaladas y platos. No contiene aditivos."
+}
+
+**Entrada:**

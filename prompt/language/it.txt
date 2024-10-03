@@ -1,49 +1,55 @@
-Ecco la traduzione in italiano della tua richiesta:
+Frase Descrittiva Breve: {una breve e concisa descrizione del prodotto}
 
-Puoi migliorare il tuo prompt per l'intelligenza artificiale come segue:
+## Istruzioni:
 
-Frase Descrittiva Breve: {una breve descrizione concisa del prodotto}
+Utilizzando la "Frase Descrittiva Breve" di cui sopra, genera un output che segua la seguente struttura JSON:
 
-Istruzioni:
-Usando la "Frase Descrittiva Breve" di cui sopra, genera un output che segua la seguente struttura JSON:
 
 {
-"nome_prodotto": "{nome del prodotto, inclusi marca e quantità se presenti nell'immagine}",
-"descrizione_dettagliata_prodotto": "{descrizione dettagliata del prodotto, arricchita con informazioni ottenibili dall'immagine e dalla frase descrittiva}"
+  "product_name": "{nome del prodotto, inclusa la marca se presente e visibile nell'immagine}",
+  "product_detailed_description": "{descrizione dettagliata del prodotto, arricchita con informazioni ottenibili dall'immagine e dalla frase descrittiva}"
 }
 
-Regole:
-Restituisci solo la struttura JSON. Non aggiungere altro testo o spiegazioni.
 
-Se la marca è visibile nell'immagine e non è specificata nella "Frase Descrittiva Breve", aggiungi il nome del marchio al campo "nome_prodotto".
+## Regole:
 
-Non fare interpretazioni o ipotesi al di fuori dell'immagine e della "Frase Descrittiva Breve".
+1. **Restituisci solo la struttura JSON**. Non aggiungere altro testo o spiegazioni.
+2. Se la **marca** è visibile nell'immagine e non è menzionata nella "Frase Descrittiva Breve", includila nel campo "product_name".
+3. **Non fare supposizioni o interpretazioni** al di là dell'immagine e della "Frase Descrittiva Breve".
+4. Estrai la **quantità** del prodotto (grammi, litri, ecc.) dalla "Frase Descrittiva Breve" o dall'immagine e includila nel campo "product_name".
+5. Nel campo "product_detailed_description", evidenzia i benefici, gli usi e le eventuali caratteristiche speciali del prodotto (ad esempio, biologico, artigianale).
+6. Le chiavi JSON devono essere in inglese: "product_name" e "product_detailed_description".  Non modificarle.
 
-Estrai la quantità del prodotto (grammi, litri, ecc.) dalla "Frase Descrittiva Breve" o dall'immagine e includila nel campo "nome_prodotto".
 
-Nel campo "descrizione_dettagliata_prodotto", evidenzia i benefici, gli usi e le caratteristiche specifiche del prodotto (ad esempio, biologico, artigianale) se presenti.
+## Esempi:
 
-Esempi:
-Input:
+**Input:**
 
-Frase Descrittiva Breve: 250 grammi di olio extravergine di oliva, spremuto a freddo.
+Frase Descrittiva Breve: Olio d'oliva da 250 grammi, spremuto a freddo.
 
-Output:
+**Output:**
+
 
 {
-"nome_prodotto": "Olio Extravergine di Oliva Spremuto a Freddo - 250g",
-"descrizione_dettagliata_prodotto": "Questo olio extravergine di oliva spremuto a freddo da 250 grammi è ottenuto da olive di alta qualità. Contiene acidi grassi salutari ed è ideale per aggiungere un sapore ricco ai tuoi piatti."
+  "product_name": "Olio d'Oliva Spremuto a Freddo - 250g",
+  "product_detailed_description": "Questo olio d'oliva spremuto a freddo da 250 grammi è ottenuto da olive di alta qualità. Ricco di acidi grassi sani, è ideale per aggiungere un sapore ricco ai vostri piatti."
 }
 
-Input:
 
-Frase Descrittiva Breve: 1 litro di melassa di melograno artigianale, naturale.
+**Input:**
 
-Output:
+Frase Descrittiva Breve: 1 litro di succo di melograno fatto in casa, naturale.
+
+**Output:**
+
 
 {
-"nome_prodotto": "Melassa di Melograno Artigianale - 1L",
-"descrizione_dettagliata_prodotto": "Questa melassa di melograno artigianale da 1 litro è prodotta utilizzando il succo di melograni freschi. È perfetta per aggiungere sapore alle tue insalate e ai tuoi piatti. Non contiene additivi."
+  "product_name": "Succo di Melograno Fatto in Casa - 1L",
+  "product_detailed_description": "Questo succo di melograno fatto in casa da 1 litro è prodotto utilizzando il succo di melograni freschi. È perfetto per aggiungere sapore alle vostre insalate e ai vostri piatti. Senza additivi."
 }
+
+**Input:**
 
 Frase Descrittiva Breve:
+
+

@@ -1,5 +1,3 @@
-Yapay zeka için yazdığın promptu şu şekilde düzenleyebilirsin:
-
 Tanımlayıcı Kısa Cümle: {ürünle ilgili kısa ve öz bir tanım}
 
 ## Talimatlar:

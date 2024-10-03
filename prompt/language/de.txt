@@ -1,47 +1,57 @@
-Du kannst den Prompt, den du für die Künstliche Intelligenz geschrieben hast, wie folgt gestalten:
+Beschreibender kurzer Satz: {kurze und prägnante Produktbeschreibung}
 
-Beschreibender Kurzsatz: {Kurze und prägnante Beschreibung des Produkts}
+## Anleitung:
 
-Anweisungen:
-Generiere anhand des obigen "Beschreibenden Kurzsatz" eine Ausgabe, die der folgenden JSON-Struktur folgt:
+Generieren Sie eine Ausgabe im folgenden JSON-Format unter Verwendung des obigen Ausdrucks "Beschreibender kurzer Satz":
 
-{
-"product_name": "{Produktname, einschließlich der Marke, falls vorhanden und im Bild sichtbar}",
-"product_detailed_description": "{Detaillierte Beschreibung des Produkts, angereichert mit Informationen aus dem Bild und dem beschreibenden Satz}"
-}
-
-Regeln:
-Gib nur die JSON-Struktur zurück. Füge keinen weiteren Text oder Erklärungen hinzu.
-
-Wenn die Marke im Bild sichtbar ist und nicht im "Beschreibenden Kurzsatz" erwähnt wird, füge den Markennamen zum Feld "product_name" hinzu.
-
-Mache keine Interpretationen oder Annahmen, die über das Bild und den "Beschreibenden Kurzsatz" hinausgehen.
-
-Entnimm die Menge des Produkts (Gramm, Liter usw.) aus dem "Beschreibenden Kurzsatz" oder dem Bild und füge sie dem Feld "product_name" hinzu.
-
-Hebe im Feld "product_detailed_description" die Vorteile, Anwendungsgebiete und ggf. besonderen Eigenschaften des Produkts (z. B. Bio, handgefertigt) hervor.
-
-Beispiele:
-Eingabe:
-
-Beschreibender Kurzsatz: 250 Gramm Olivenöl, kaltgepresst.
-
-Ausgabe:
 
 {
-"product_name": "Kaltgepresstes Olivenöl - 250g",
-"product_detailed_description": "Dieses 250 Gramm kaltgepresste Olivenöl wird aus hochwertigen Oliven gewonnen. Es enthält gesunde Fettsäuren und ist ideal, um Ihren Gerichten einen reichhaltigen Geschmack zu verleihen."
+  "product_name": "{Produktname, inklusive Marke, falls vorhanden und im Bild sichtbar}",
+  "product_detailed_description": "{detaillierte Produktbeschreibung, angereichert mit Informationen aus dem Bild und dem beschreibenden Satz}"
 }
 
-Eingabe:
 
-Beschreibender Kurzsatz: 1 Liter handgemachter Granatapfelessig, natürlich.
+## Regeln:
 
-Ausgabe:
+1. Geben Sie **nur die JSON-Struktur** zurück. Fügen Sie keinen weiteren Text oder Erklärungen hinzu.
+2. Wenn die **Marke** im Bild sichtbar ist und nicht im "Beschreibenden kurzen Satz" erwähnt wird, fügen Sie den Markennamen dem Feld "product_name" hinzu.
+3. Treffen Sie **keine Annahmen oder Interpretationen**, die über das Bild und den "Beschreibenden kurzen Satz" hinausgehen.
+4. Entnehmen Sie die **Menge** des Produkts (Gramm, Liter usw.) dem "Beschreibenden kurzen Satz" oder dem Bild und fügen Sie sie dem Feld "product_name" hinzu.
+5. Heben Sie im Feld "product_detailed_description" die Vorteile, Anwendungsbereiche und gegebenenfalls besondere Eigenschaften des Produkts (z. B. Bio, handgefertigt) hervor.
+6. JSON-Schlüssel müssen auf Englisch sein.
+7. Verwenden Sie ausschließlich die JSON-Schlüssel "product_name" und "product_detailed_description". Ändern Sie diese nicht.
+
+## Beispiele:
+
+**Eingabe:**
+
+Beschreibender kurzer Satz: 250 Gramm Olivenöl, kaltgepresst.
+
+**Ausgabe:**
+
 
 {
-"product_name": "Handgemachter Granatapfelessig - 1L",
-"product_detailed_description": "Dieser 1 Liter handgemachte Granatapfelessig wird aus dem Saft frischer Granatäpfel hergestellt. Er eignet sich hervorragend zum Würzen von Salaten und Gerichten. Er ist frei von Zusatzstoffen."
+  "product_name": "Kaltgepresstes Olivenöl - 250g",
+  "product_detailed_description": "Dieses 250g kaltgepresste Olivenöl wird aus hochwertigen Oliven gewonnen. Es enthält gesunde Fettsäuren und ist ideal, um Ihren Gerichten einen reichen Geschmack zu verleihen."
 }
 
-Beschreibender Kurzsatz:
+
+**Eingabe:**
+
+Beschreibender kurzer Satz: 1 Liter handgemachter Granatapfelessig, natürlich.
+
+**Ausgabe:**
+
+
+{
+  "product_name": "Handgemachter Granatapfelessig - 1L",
+  "product_detailed_description": "Dieser 1 Liter handgemachte Granatapfelessig wird aus dem Saft frischer Granatäpfel hergestellt. Er eignet sich hervorragend zum Würzen von Salaten und Speisen. Er ist frei von Zusatzstoffen."
+}
+
+**Eingabe:**
+
+Beschreibender kurzer Satz:
+
+
+
+
