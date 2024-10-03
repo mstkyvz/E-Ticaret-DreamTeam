@@ -153,6 +153,24 @@ def get_image_info(uploaded_file,description):
     output = response.json()['output']
     return output
 
+
+@timer                
+def get_sam_mask(file,des,mask_id):
+    url = "http://localhost:8002/process_image/"
+    files = {"file": file}
+    data = {"description": des}
+    print(type(file),type(des))
+    response = requests.post(url, files=files, data=data)
+
+    if response.status_code == 200:
+        with open(f"/home/jupyter/temp/mask/{mask_id}.png", "wb") as f:
+            f.write(response.content)
+        print("Image processed and saved as processed_image.png")
+        return response.content
+    else:
+        print(f"Error: {response.status_code}, {response.text}")
+
+
 def hash_string(s):
     return hashlib.sha256(s.encode()).hexdigest()
     
@@ -180,8 +198,8 @@ def main():
                     alert.warning('Resimi Tekrar Yükleyin', icon="⚠️")
                     preview_container(uploaded_file, description)
                 else:
-                    
-                    file_bytes = np.frombuffer(uploaded_file.read(), np.uint8)
+                    byte_file=uploaded_file.read()
+                    file_bytes = np.frombuffer(byte_file, np.uint8)
                     image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
                     image_id = hash_string(str(image))
                     file_path = f"/home/jupyter/temp/in/{image_id}.png"
@@ -190,7 +208,9 @@ def main():
                     if f"{image_id}.png" in os.listdir(f"/home/jupyter/temp/out/"):
                         img = Image.open(f"/home/jupyter/temp/out/{image_id}.png")
                     else:
+                        get_sam_mask(open(file_path,"rb"),description,image_id)
                         output_for_image=get_image_info(file_path,prompt.image_info.format(description))
+                        output_for_image=prompt.image_prompt.format(output_for_image)
                         img=generate_image(output_for_image,file_path)
                         buffered = BytesIO()
                         img.save(buffered, format="PNG")
@@ -223,11 +243,6 @@ def main():
             preview_container(uploaded_file, description, flag)
 
     st.markdown(get_additional_styles(), unsafe_allow_html=True)
-    
-    if st.button("Resmi büyüt"):
-        try:
-            st.image(img, caption='Görsel', use_column_width=True)
-        except:
-            pass
+
 if __name__ == "__main__":
     main()
