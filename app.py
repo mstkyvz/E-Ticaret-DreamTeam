@@ -154,21 +154,21 @@ def get_image_info(uploaded_file,description):
     return output
 
 
-@timer                
-def get_sam_mask(file,des,mask_id):
-    url = "http://localhost:8002/process_image/"
-    files = {"file": file}
-    data = {"description": des}
-    print(type(file),type(des))
-    response = requests.post(url, files=files, data=data)
+# @timer                
+# def get_sam_mask(file,des,mask_id):
+#     url = "http://localhost:8002/process_image/"
+#     files = {"file": file}
+#     data = {"description": des}
+#     print(type(file),type(des))
+#     response = requests.post(url, files=files, data=data)
 
-    if response.status_code == 200:
-        with open(f"/home/jupyter/temp/mask/{mask_id}.png", "wb") as f:
-            f.write(response.content)
-        print("Image processed and saved as processed_image.png")
-        return response.content
-    else:
-        print(f"Error: {response.status_code}, {response.text}")
+#     if response.status_code == 200:
+#         with open(f"/home/jupyter/temp/mask/{mask_id}.png", "wb") as f:
+#             f.write(response.content)
+#         print("Image processed and saved as processed_image.png")
+#         return response.content
+#     else:
+#         print(f"Error: {response.status_code}, {response.text}")
 
 
 def hash_string(s):
@@ -208,7 +208,7 @@ def main():
                     if f"{image_id}.png" in os.listdir(f"/home/jupyter/temp/out/"):
                         img = Image.open(f"/home/jupyter/temp/out/{image_id}.png")
                     else:
-                        get_sam_mask(open(file_path,"rb"),description,image_id)
+                        #get_sam_mask(open(file_path,"rb"),description,image_id)
                         output_for_image=get_image_info(file_path,prompt.image_info.format(description))
                         output_for_image=prompt.image_prompt.format(output_for_image)
                         img=generate_image(output_for_image,file_path)
